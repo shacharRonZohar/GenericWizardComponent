@@ -1,54 +1,121 @@
-# React + TypeScript + Vite
+# Enhanced Wizard Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, flexible, and customizable wizard component built with React and TypeScript. This component provides a step-by-step interface for guiding users through complex processes or forms.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🎯 **Type-Safe**: Built with TypeScript for better development experience
+- 🎨 **Customizable**: Styled with Tailwind CSS for easy theming and customization
+- 🚀 **Modern Stack**: Built with Vite for fast development and optimized builds
+- 📱 **Responsive**: Works seamlessly across different screen sizes
+- 🧪 **Tested**: Includes comprehensive test coverage with Vitest
+- 🐳 **Docker Support**: Ready for containerized deployment
+- 📦 **Production Ready**: Optimized build process with Nginx configuration
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend Framework**: React 18
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Build Tool**: Vite
+- **Testing**: Vitest, React Testing Library
+- **Code Quality**: ESLint, Prettier
+- **Containerization**: Docker, Nginx
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm
+- Docker (optional, for containerized deployment)
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd enhanced-wizard
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm install
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```
+
+### Development
+
+To start the development server:
+
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`
+
+### Building for Production
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+### Testing
+
+Run the test suite:
+
+```bash
+npm test
+```
+
+For test coverage:
+
+```bash
+npm run test:coverage
+```
+
+### Docker Deployment
+
+Build the Docker image:
+
+```bash
+docker build -t enhanced-wizard .
+```
+
+Run the container:
+
+```bash
+docker run -p 80:80 enhanced-wizard
+```
+
+The application will be available at `http://localhost`
+
+## Project Structure
+
+```
+src/
+├── assets/         # Static assets
+├── components/     # React components
+├── test/          # Test files
+├── types/         # TypeScript type definitions
+├── util/          # Utility functions
+├── App.tsx        # Main application component
+├── main.tsx       # Application entry point
+└── index.css      # Global styles
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
