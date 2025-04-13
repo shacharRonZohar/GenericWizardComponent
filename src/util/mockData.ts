@@ -24,7 +24,7 @@ export const mockQuestions = [
     validationRules: [VALIDATION_RULES.NON_EMPTY, VALIDATION_RULES.MIN_LENGTH],
     skipCondition: {
       dependsOn: '2',
-      condition: answer => answer.toLowerCase() === 'yes',
+      condition: answer => answer === 'yes',
     },
   },
   {
@@ -49,7 +49,7 @@ export const mockQuestions = [
     validationRules: [VALIDATION_RULES.NON_EMPTY],
     skipCondition: {
       dependsOn: '5',
-      condition: answer => answer.toLowerCase() === 'no',
+      condition: answer => answer === 'no',
     },
   },
   {
@@ -74,7 +74,14 @@ export const mockQuestions = [
     validationRules: [VALIDATION_RULES.NON_EMPTY],
     skipCondition: {
       dependsOn: '8',
-      condition: answer => answer.toLowerCase().includes('business'),
+      condition: answer => answer.includes('business'),
     },
+  },
+  {
+    id: '10',
+    title: 'Final Confirmation',
+    text: 'Please review your information and confirm it is correct (yes/no)',
+    answer: '',
+    validationRules: [VALIDATION_RULES.NON_EMPTY],
   },
 ] satisfies GenericWizardQuestion[];
