@@ -1,4 +1,3 @@
-import { GenericWizardQuestion } from '../../types/GenericWizard';
 import { useQuestionManager } from './hooks/useQuestionManager';
 import { ProgressIndicator } from './components/ProgressIndicator';
 import { WizardNavigation } from './components/WizardNavigation';
@@ -34,7 +33,7 @@ export const GenericWizard = ({
     currentAnswer,
     isFirstQuestion,
     isLastQuestion,
-    setCurrentAnswer,
+    handleChangeCurrentAnswer,
     handleNextQuestion,
     handlePreviousQuestion,
     isCurrentQuestionValid,
@@ -51,7 +50,7 @@ export const GenericWizard = ({
         <WizardQuestion
           question={questions[currentQuestionIndex]}
           answer={currentAnswer}
-          onAnswerChange={answer => setCurrentAnswer(answer)}
+          onAnswerChange={handleChangeCurrentAnswer}
         />
         <WizardNavigation
           isFirstQuestion={isFirstQuestion}
