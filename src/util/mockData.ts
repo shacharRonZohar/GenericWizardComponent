@@ -7,7 +7,7 @@ export const mockQuestions = [
     title: 'What is your name?',
     text: 'Please enter your name',
     answer: '',
-    validationRules: [VALIDATION_RULES.NON_EMPTY],
+    validationRules: [VALIDATION_RULES.NON_EMPTY, VALIDATION_RULES.MIN_LENGTH],
   },
   {
     id: '2',
@@ -18,9 +18,9 @@ export const mockQuestions = [
   },
   {
     id: '3',
-    title: 'What is your email?',
-    text: 'Please enter your email',
+    title: 'What is your favorite color?',
+    text: 'Please enter your favorite color',
     answer: '',
-    validationRules: [VALIDATION_RULES.NON_EMPTY],
+    validationRules: [VALIDATION_RULES.NON_EMPTY, VALIDATION_RULES.MAX_LENGTH],
   },
 ] satisfies GenericWizardQuestion[];

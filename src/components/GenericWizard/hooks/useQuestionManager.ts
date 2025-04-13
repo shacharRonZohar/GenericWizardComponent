@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { GenericWizardQuestion } from '../../../types/GenericWizard';
+import { validateQuestion } from '../../../util/validation';
 
 interface UseQuestionManagerParams {
   initialQuestions: GenericWizardQuestion[];
@@ -20,6 +21,7 @@ export const useQuestionManager = ({
   const isFirstQuestion = currentQuestionIndex === 0;
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
 
+  const isCurrentQuestionValid = validateQuestion(currentQuestion, currentAnswer);
   const handleAnswerConfirmed = (questionId: string, answer: string) => {
     setQuestions(prevQuestions =>
       prevQuestions.map(q => (q.id === questionId ? { ...q, answer } : q))
@@ -27,6 +29,9 @@ export const useQuestionManager = ({
   };
 
   const handleNextQuestion = () => {
+    if (!isCurrentQuestionValid) {
+      return;
+    }
     handleAnswerConfirmed(currentQuestion.id, currentAnswer);
 
     if (isLastQuestion) {
@@ -61,6 +66,7 @@ export const useQuestionManager = ({
     currentAnswer,
     isFirstQuestion,
     isLastQuestion,
+    isCurrentQuestionValid,
     setCurrentAnswer,
     handleAnswerConfirmed,
     handleNextQuestion,

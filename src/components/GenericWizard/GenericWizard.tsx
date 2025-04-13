@@ -21,6 +21,7 @@ export const GenericWizard = ({
     setCurrentAnswer,
     handleNextQuestion,
     handlePreviousQuestion,
+    isCurrentQuestionValid,
   } = useQuestionManager({
     initialQuestions,
     onComplete,
@@ -34,6 +35,7 @@ export const GenericWizard = ({
         isLastQuestion={isLastQuestion}
         onNextClick={handleNextQuestion}
         onPreviousClick={handlePreviousQuestion}
+        isCurrentQuestionValid={isCurrentQuestionValid}
       />
       <WizardQuestion
         question={questions[currentQuestionIndex]}
@@ -49,6 +51,7 @@ interface WizardNavigationProps {
   isLastQuestion: boolean;
   onNextClick: () => void;
   onPreviousClick: () => void;
+  isCurrentQuestionValid: boolean;
 }
 
 const WizardNavigation = ({
@@ -56,11 +59,16 @@ const WizardNavigation = ({
   isLastQuestion,
   onNextClick,
   onPreviousClick,
+  isCurrentQuestionValid,
 }: WizardNavigationProps) => {
   return (
     <nav className="flex items-center justify-center">
       {!isFirstQuestion && <button onClick={onPreviousClick}>Previous</button>}
-      {<button onClick={onNextClick}>{isLastQuestion ? 'Done' : 'Next'}</button>}
+      {
+        <button onClick={onNextClick} disabled={!isCurrentQuestionValid}>
+          {isLastQuestion ? 'Done' : 'Next'}
+        </button>
+      }
     </nav>
   );
 };
